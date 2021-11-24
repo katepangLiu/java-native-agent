@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Premain-Class: com.pang.nativeagent.example.Agent
+Agent-Class: com.pang.nativeagent.example.Agent
+Can-Redefine-Classes: true
