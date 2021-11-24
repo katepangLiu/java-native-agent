@@ -3,6 +3,8 @@
 ## QuickStart
 
 ```shell
+cd nativeagent
+
 # build
 sh build
 
