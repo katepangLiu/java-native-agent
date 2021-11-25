@@ -55,7 +55,7 @@
  * Signature: (Ljava/lang/Class;)Z
  */
 JNIEXPORT jboolean JNICALL
-com_pang_nativeagent_instrument_InstrumentationImpl_isModifiableClass0
+Java_com_pang_nativeagent_instrument_InstrumentationImpl_isModifiableClass0
   (JNIEnv * jnienv, jobject implThis, jlong agent, jclass clazz) {
     return isModifiableClass(jnienv, (JPLISAgent*)(intptr_t)agent, clazz);
 }
@@ -66,7 +66,7 @@ com_pang_nativeagent_instrument_InstrumentationImpl_isModifiableClass0
  * Signature: ()Z
  */
 JNIEXPORT jboolean JNICALL
-com_pang_nativeagent_instrument_InstrumentationImpl_isRetransformClassesSupported0
+Java_com_pang_nativeagent_instrument_InstrumentationImpl_isRetransformClassesSupported0
   (JNIEnv * jnienv, jobject implThis, jlong agent) {
     return isRetransformClassesSupported(jnienv, (JPLISAgent*)(intptr_t)agent);
 }
@@ -77,7 +77,7 @@ com_pang_nativeagent_instrument_InstrumentationImpl_isRetransformClassesSupporte
  * Signature: (Z)V
  */
 JNIEXPORT void JNICALL
-com_pang_nativeagent_instrument_InstrumentationImpl_setHasRetransformableTransformers
+Java_com_pang_nativeagent_instrument_InstrumentationImpl_setHasRetransformableTransformers
   (JNIEnv * jnienv, jobject implThis, jlong agent, jboolean has) {
     setHasRetransformableTransformers(jnienv, (JPLISAgent*)(intptr_t)agent, has);
 }
@@ -88,7 +88,7 @@ com_pang_nativeagent_instrument_InstrumentationImpl_setHasRetransformableTransfo
  * Signature: ([Ljava/lang/Class;)V
  */
 JNIEXPORT void JNICALL
-com_pang_nativeagent_instrument_InstrumentationImpl_retransformClasses0
+Java_com_pang_nativeagent_instrument_InstrumentationImpl_retransformClasses0
   (JNIEnv * jnienv, jobject implThis, jlong agent, jobjectArray classes) {
     retransformClasses(jnienv, (JPLISAgent*)(intptr_t)agent, classes);
 }
@@ -98,7 +98,7 @@ com_pang_nativeagent_instrument_InstrumentationImpl_retransformClasses0
  * Method:    redefineClasses0
  * Signature: ([Ljava/lang/instrument/ClassDefinition;)V
  */
-JNIEXPORT void JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_redefineClasses0
+JNIEXPORT void JNICALL Java_com_pang_nativeagent_instrument_InstrumentationImpl_redefineClasses0
   (JNIEnv * jnienv, jobject implThis, jlong agent, jobjectArray classDefinitions) {
     redefineClasses(jnienv, (JPLISAgent*)(intptr_t)agent, classDefinitions);
 }
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_redef
  * Method:    getAllLoadedClasses0
  * Signature: ()[Ljava/lang/Class;
  */
-JNIEXPORT jobjectArray JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_getAllLoadedClasses0
+JNIEXPORT jobjectArray JNICALL Java_com_pang_nativeagent_instrument_InstrumentationImpl_getAllLoadedClasses0
   (JNIEnv * jnienv, jobject implThis, jlong agent) {
     return getAllLoadedClasses(jnienv, (JPLISAgent*)(intptr_t)agent);
 }
@@ -118,7 +118,7 @@ JNIEXPORT jobjectArray JNICALL com_pang_nativeagent_instrument_InstrumentationIm
  * Method:    getInitiatedClasses0
  * Signature: (Ljava/lang/ClassLoader;)[Ljava/lang/Class;
  */
-JNIEXPORT jobjectArray JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_getInitiatedClasses0
+JNIEXPORT jobjectArray JNICALL Java_com_pang_nativeagent_instrument_InstrumentationImpl_getInitiatedClasses0
   (JNIEnv * jnienv, jobject implThis, jlong agent, jobject classLoader) {
     return getInitiatedClasses(jnienv, (JPLISAgent*)(intptr_t)agent, classLoader);
 }
@@ -128,7 +128,7 @@ JNIEXPORT jobjectArray JNICALL com_pang_nativeagent_instrument_InstrumentationIm
  * Method:    getObjectSize0
  * Signature: (Ljava/lang/Object;)J
  */
-JNIEXPORT jlong JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_getObjectSize0
+JNIEXPORT jlong JNICALL Java_com_pang_nativeagent_instrument_InstrumentationImpl_getObjectSize0
   (JNIEnv * jnienv, jobject implThis, jlong agent, jobject objectToSize) {
     return getObjectSize(jnienv, (JPLISAgent*)(intptr_t)agent, objectToSize);
 }
@@ -139,7 +139,7 @@ JNIEXPORT jlong JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_getO
  * Method:    appendToClassLoaderSearch0
  * Signature: (Ljava/lang/String;Z)V
  */
-JNIEXPORT void JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_appendToClassLoaderSearch0
+JNIEXPORT void JNICALL Java_com_pang_nativeagent_instrument_InstrumentationImpl_appendToClassLoaderSearch0
   (JNIEnv * jnienv, jobject implThis, jlong agent, jstring jarFile, jboolean isBootLoader) {
     appendToClassLoaderSearch(jnienv, (JPLISAgent*)(intptr_t)agent, jarFile, isBootLoader);
 }
@@ -150,7 +150,7 @@ JNIEXPORT void JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_appen
  * Method:    setNativeMethodPrefixes
  * Signature: ([Ljava/lang/String;Z)V
  */
-JNIEXPORT void JNICALL com_pang_nativeagent_instrument_InstrumentationImpl_setNativeMethodPrefixes
+JNIEXPORT void JNICALL Java_com_pang_nativeagent_instrument_InstrumentationImpl_setNativeMethodPrefixes
   (JNIEnv * jnienv, jobject implThis, jlong agent, jobjectArray prefixArray, jboolean isRetransformable) {
     setNativeMethodPrefixes(jnienv, (JPLISAgent*)(intptr_t)agent, prefixArray, isRetransformable);
 }

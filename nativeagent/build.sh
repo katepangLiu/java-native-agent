@@ -5,12 +5,13 @@ rm -rf classes/ && mkdir classes
 javac -d classes/ com/pang/nativeagent/instrument/*.java
 cd classes/
 jar cf instrument.jar com/pang/nativeagent/instrument/*.class
+cd ..
 javah com.pang.nativeagent.instrument.InstrumentationImpl
-cd ../..
+cd ..
 rm -rf lib && mkdir lib
 mv java/classes/instrument.jar lib/
 rm -rf gen_headers && mkdir gen_headers
-mv java/classes/com_pang_nativeagent_instrument_InstrumentationImpl.h gen_headers/
+mv java/*.h gen_headers/
 
 # example agent.jar
 echo "build agent.jar"
