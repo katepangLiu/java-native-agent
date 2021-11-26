@@ -269,10 +269,6 @@ public class InstrumentationImpl implements Instrumentation {
     private native void
     setNativeMethodPrefixes(long nativeAgent, String[] prefixes, boolean isRetransformable);
 
-    static {
-        System.loadLibrary("instrument");
-    }
-
     /*
      *  Internals
      */
