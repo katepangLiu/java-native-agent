@@ -5,10 +5,9 @@
 ```shell
 cd nativeagent
 
-# build
-sh build
+# build, it will generate lib/instrument.jar lib/libnativeagent.so , and agent.jar, the simplest example agent.
+sh build.sh
 
 # test
 java -Xbootclasspath/a:lib/instrument.jar -agentpath:lib/libnativeagent.so=jar/agent.jar -version
 ```
-
