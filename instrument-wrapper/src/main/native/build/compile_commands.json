@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/mnt/hgfs/d/apm/smartagent/javalib-some/demo/java-native-agent/instrument_wrapper/src/main/native/build",
+  "command": "/usr/lib64/ccache/cc -Dinstrument_wrapper_EXPORTS -I/usr/lib/jvm/java/include -I/usr/lib/jvm/java/include/linux  -fPIC   -o CMakeFiles/instrument_wrapper.dir/instrument_wrapper.c.o   -c /mnt/hgfs/d/apm/smartagent/javalib-some/demo/java-native-agent/instrument_wrapper/src/main/native/instrument_wrapper.c",
+  "file": "/mnt/hgfs/d/apm/smartagent/javalib-some/demo/java-native-agent/instrument_wrapper/src/main/native/instrument_wrapper.c"
+}
+]

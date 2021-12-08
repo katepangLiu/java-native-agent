@@ -1,0 +1,3 @@
+/mnt/hgfs/d/apm/smartagent/javalib-some/demo/java-native-agent/instrument_wrapper/src/main/native/build/CMakeFiles/rebuild_cache.dir
+/mnt/hgfs/d/apm/smartagent/javalib-some/demo/java-native-agent/instrument_wrapper/src/main/native/build/CMakeFiles/edit_cache.dir
+/mnt/hgfs/d/apm/smartagent/javalib-some/demo/java-native-agent/instrument_wrapper/src/main/native/build/CMakeFiles/instrument_wrapper.dir
