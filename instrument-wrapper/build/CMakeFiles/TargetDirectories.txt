@@ -1,3 +1,0 @@
-/mnt/hgfs/d/github/katepangliu/java-native-agent/instrument-wrapper/build/CMakeFiles/rebuild_cache.dir
-/mnt/hgfs/d/github/katepangliu/java-native-agent/instrument-wrapper/build/CMakeFiles/edit_cache.dir
-/mnt/hgfs/d/github/katepangliu/java-native-agent/instrument-wrapper/build/CMakeFiles/instrument_wrapper.dir

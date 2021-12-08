@@ -1,1 +1,0 @@
-/usr/lib64/ccache/cc -fPIC   -shared -Wl,-soname,libinstrument_wrapper.so -o libinstrument_wrapper.so CMakeFiles/instrument_wrapper.dir/instrument_wrapper.c.o 
