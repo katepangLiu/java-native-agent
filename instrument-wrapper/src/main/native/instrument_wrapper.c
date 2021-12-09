@@ -1,9 +1,9 @@
-#include    <string.h>
-#include    <stdlib.h>
-#include    <dlfcn.h>
+#include <dlfcn.h>
+#include <jvmti.h>
+#include <stdlib.h>
+#include <string.h>
 
-#include    "jni.h"
-#include    <jvmti.h>
+#include "jni.h"
 
 #define JNI_LIB_PREFIX "lib"
 #ifdef __APPLE__
@@ -16,11 +16,11 @@
 #define JNI_LIB_NAME(NAME) JNI_LIB_PREFIX NAME JNI_LIB_SUFFIX
 
 #ifndef ARRAY_SIZE
-#	define ARRAY_SIZE(x) (sizeof(x) / sizeof(*(x)))
+#define ARRAY_SIZE(x) (sizeof(x) / sizeof(*(x)))
 #endif
 
-typedef jint (JNICALL *insturment_Agent_OnLoad_t)(JavaVM *vm, char *tail, void * reserved);
-typedef void (JNICALL *insturment_Agent_OnUnload_t)(JavaVM *vm);
+typedef jint(JNICALL *insturment_Agent_OnLoad_t)(JavaVM *vm, char *tail, void *reserved);
+typedef void(JNICALL *insturment_Agent_OnUnload_t)(JavaVM *vm);
 
 static void *handle_instrument = NULL;
 static insturment_Agent_OnLoad_t insturment_Agent_OnLoad = NULL;
@@ -54,25 +54,23 @@ static void RegisterNatives(JNIEnv *env, char *classPath, const JNINativeMethod 
     }
 }
 
-jstring stringFromJNI(JNIEnv *env, jobject thiz){
-    char* str = "NativeMethod_stringFromJNI";
-    return (*env)->NewStringUTF(env, str );
+jstring stringFromJNI(JNIEnv *env, jobject thiz) {
+    char *str = "NativeMethod_stringFromJNI";
+    return (*env)->NewStringUTF(env, str);
 }
 
 static const JNINativeMethod methods_InstrumentWrapper[] = {
-        {"stringFromJNI", "()Ljava/lang/String;", (jstring*)stringFromJNI}
-};
+    {"stringFromJNI", "()Ljava/lang/String;", (jstring *)stringFromJNI}};
 
 /*
 Called when javacode System.load()/System.loadLibrary()
 */
-JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
-{
-    printf ("JNI_OnLoad \n");
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+    printf("JNI_OnLoad \n");
 
     JNIEnv *env = NULL;
-    if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_1) != JNI_OK) {
-        printf ("GetEnv failed \n");
+    if ((*vm)->GetEnv(vm, (void **)&env, JNI_VERSION_1_1) != JNI_OK) {
+        printf("GetEnv failed \n");
         return JNI_ERR;
     }
     RegisterNatives(env, "com/pang/instrument_wrapper/InstrumentWrapper", methods_InstrumentWrapper, ARRAY_SIZE(methods_InstrumentWrapper));
@@ -83,36 +81,36 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved)
 Called when load agent, before JNI_OnLoad
 */
 JNIEXPORT jint JNICALL Agent_OnLoad(JavaVM *vm, char *tail, void *reserved) {
-    printf ("Agent_OnLoad \n");
+    printf("Agent_OnLoad \n");
 
     handle_instrument = dlopen(JNI_LIB_NAME("instrument"), RTLD_LAZY);
     if (handle_instrument == NULL) {
-        printf ("error in dlopen: %s \n", dlerror());
+        printf("error in dlopen: %s \n", dlerror());
         return JNI_ERR;
     }
 
-    char* symbol = "Agent_OnLoad";
+    char *symbol = "Agent_OnLoad";
     insturment_Agent_OnLoad = (insturment_Agent_OnLoad_t)dlsym(handle_instrument, symbol);
-    if ( insturment_Agent_OnLoad == NULL) {
-        printf ("error in dlsym(%s): %s \n", symbol, dlerror());
+    if (insturment_Agent_OnLoad == NULL) {
+        printf("error in dlsym(%s): %s \n", symbol, dlerror());
         return JNI_ERR;
     }
 
-    printf( "call insturment.Agent_OnLoad \n");
+    printf("call insturment.Agent_OnLoad \n");
     jint status = insturment_Agent_OnLoad(vm, tail, reserved);
-    printf( "insturment.Agent_OnLoad : %d\n", status);
+    printf("insturment.Agent_OnLoad : %d\n", status);
     return status;
 }
 
 JNIEXPORT void JNICALL Agent_OnUnload(JavaVM *vm) {
-    printf ("Agent_OnUnload \n");
+    printf("Agent_OnUnload \n");
 
-    if( !handle_instrument ) {
+    if (!handle_instrument) {
         return;
     }
-    char* symbol = "Agent_OnUnload";
+    char *symbol = "Agent_OnUnload";
     instrument_Agent_OnUnload = (insturment_Agent_OnUnload_t)dlsym(handle_instrument, symbol);
-    if ( instrument_Agent_OnUnload) {
+    if (instrument_Agent_OnUnload) {
         instrument_Agent_OnUnload(vm);
     }
 
